@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.moulik.myapplication.PublishMessageActivity">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/SL1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Speed Limit 1"
+        android:layout_marginTop="15dp"
+        />
+
+    <Button
+        android:id="@+id/SL2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Speed Limit 2"
+        android:layout_marginTop="15dp"
+       />
+    <Button
+        android:id="@+id/SL3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Speed Limit 3"
+        android:layout_marginTop="15dp"
+        />
+    <Button
+        android:id="@+id/SL4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Speed Limit 4"
+        android:layout_marginTop="15dp"
+        />
+    <Button
+        android:id="@+id/reverseBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reverse"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"/>
+    <RadioGroup
+        android:id="@+id/radioGroupForReverse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/zero_reverse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="zero"
+            android:textSize="15dp"
+            android:onClick="onRadioButtonClicked"
+            android:layout_marginRight="20dp"/>
+        <RadioButton
+            android:id="@+id/one_reverse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="one"
+            android:textSize="15dp" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/switchBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Switch"
+        android:layout_marginTop="15dp"
+       />
+
+    <RadioGroup
+        android:id="@+id/radioGroupForSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/zero_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="zero"
+            android:textSize="15dp"
+            android:onClick="onRadioButtonClicked"
+            android:layout_marginRight="20dp"/>
+        <RadioButton
+            android:id="@+id/one_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="one"
+            android:onClick="onRadioButtonClicked"
+            android:textSize="15dp" />
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/messageText"
+        android:textAllCaps="true"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:layout_marginTop="20dp"/>
+
+</LinearLayout>
+</ScrollView>
+</RelativeLayout>
