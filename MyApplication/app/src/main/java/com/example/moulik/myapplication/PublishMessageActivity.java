@@ -1,18 +1,14 @@
 package com.example.moulik.myapplication;
 
-import android.os.Build;
+import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.view.View.OnClickListener;
 
 import org.eclipse.paho.android.service.MqttAndroidClient;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
@@ -21,6 +17,14 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
 public class PublishMessageActivity extends AppCompatActivity implements View.OnClickListener{
+
+    static String carSelect = "car";
+
+    private Button car1;
+    private Button car2;
+    private Button car3;
+    private Button car4;
+    private Button car5;
 
     private Button speedLimit1;
     private Button speedLimit2;
@@ -39,25 +43,44 @@ public class PublishMessageActivity extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.message_activity);
 
+        car1 = (Button) findViewById(R.id.car1);
+        car2 = (Button) findViewById(R.id.car2);
+        car3 = (Button) findViewById(R.id.car3);
+        car4 = (Button) findViewById(R.id.car4);
+        car5 = (Button) findViewById(R.id.car4);
+
         speedLimit1 = (Button) findViewById(R.id.SL1);
         speedLimit2 = (Button) findViewById(R.id.SL2);
         speedLimit3 = (Button) findViewById(R.id.SL3);
         speedLimit4 = (Button) findViewById(R.id.SL4);
-        reverseBtn = (Button) findViewById(R.id.reverseBtn);
-        switchBtn = (Button) findViewById(R.id.switchBtn);
+        reverseBtn  = (Button) findViewById(R.id.reverseBtn);
+        switchBtn   = (Button) findViewById(R.id.switchBtn);
         radioGroupForReverse = (RadioGroup) findViewById(R.id.radioGroupForReverse);
-        radioGroupForSwitch = (RadioGroup) findViewById(R.id.radioGroupForSwitch);
+        radioGroupForSwitch  = (RadioGroup) findViewById(R.id.radioGroupForSwitch);
         messageText = (TextView)findViewById(R.id.messageText);
         client = MainActivity.getMqttAndroidClient();
         client.setCallback(callBackForReceiver);
-        try {
+        /*try {
             client.subscribe("SL.1",0);
             client.subscribe("SL.2",0);
             client.subscribe("SL.3",0);
             client.subscribe("SL.4",0);
         } catch (MqttException e) {
            Log.e(TAG,"Error while subscribing a message");
+        }*/
+        try {
+            client.subscribe("C1SL.1",2);
+            client.subscribe("C1SL.2",2);
+            client.subscribe("C1SL.3",2);
+            client.subscribe("C1SL.4",2);
+        } catch (MqttException e) {
+           Log.e(TAG,"Error while subscribing a message");
         }
+        car1.setOnClickListener(this);
+        car2.setOnClickListener(this);
+        car3.setOnClickListener(this);
+        car4.setOnClickListener(this);
+        car5.setOnClickListener(this);
 
         speedLimit1.setOnClickListener(this);
         speedLimit2.setOnClickListener(this);
@@ -75,33 +98,42 @@ public class PublishMessageActivity extends AppCompatActivity implements View.On
         switch (view.getId()){
             case R.id.SL1:
                 messageText.setText("");
-                publishMessage("SL.1","1");
+                publishMessage(carSelect+"SL.1","1");
                 break;
             case R.id.SL2:
                 messageText.setText("");
-                publishMessage("SL.2","1");
+                publishMessage(carSelect+"SL.2","1");
                 break;
             case R.id.SL3:
                 messageText.setText("");
-                publishMessage("SL.3","1");
+                publishMessage(carSelect+"SL.3","1");
                 break;
             case R.id.SL4:
                 messageText.setText("");
-                publishMessage("SL.4","1");
+                publishMessage(carSelect+"SL.4","1");
                 break;
-
             case R.id.reverseBtn:
-
                 break;
-
-
             case R.id.switchBtn:
-
                 break;
 
+            case R.id.car1:
+                car1.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
+                carSelect = car1.getText().toString();
+                break;
+            case R.id.car2:
+                carSelect = car2.getText().toString();
+                break;
+            case R.id.car3:
+                carSelect =  car3.getText().toString();
+                break;
+            case R.id.car4:
+                carSelect = car4.getText().toString();
+                break;
+            case R.id.car5:
+                carSelect = (String) car5.getText();
+                break;
         }
-
-
     }
 
     public void onRadioButtonClicked(View view) {
@@ -114,22 +146,22 @@ public class PublishMessageActivity extends AppCompatActivity implements View.On
 
                 if (checked)
                    Log.i(TAG,"Zero of reverse clicked");
-                publishMessage("Reverse","0");
+                publishMessage(carSelect+"Reverse","0");
                     break;
             case R.id.one_reverse:
                 if (checked)
                     Log.i(TAG,"one of reverse Checked");
-                publishMessage("Reverse","1");
+                publishMessage(carSelect+"Reverse","1");
                     break;
             case R.id.zero_switch:
                 if (checked)
                     Log.i(TAG,"Zero of reverse clicked");
-                publishMessage("Switch","0");
+                publishMessage(carSelect+"Switch","0");
                 break;
             case R.id.one_switch:
                 if (checked)
                     Log.i(TAG,"one of reverse Checked");
-                publishMessage("Switch","1");
+                publishMessage(carSelect+"Switch","1");
                 break;
         }
     }
@@ -144,17 +176,17 @@ public class PublishMessageActivity extends AppCompatActivity implements View.On
 
         @Override
         public void messageArrived(String topic, MqttMessage message) throws Exception {
-            Log.d(TAG,"messagearrived");
-            if(topic.equals("SL.1")){
+            Log.d(TAG,"messageArrived");
+            if(topic.equals("C1SL.1")){
                 speedLimit1.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
 
-            }else if(topic.equals("SL.2")){
+            }else if(topic.equals("C1SL.2")){
                 speedLimit2.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
 
-            }else if(topic.equals("SL.3")){
+            }else if(topic.equals("C1SL.3")){
                 speedLimit3.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
 
-            }else if(topic.equals("SL.4")){
+            }else if(topic.equals("C1SL.4")){
                 speedLimit4.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), R.color.colorAccent));
 
             }
@@ -178,10 +210,10 @@ public class PublishMessageActivity extends AppCompatActivity implements View.On
     private void publishMessage(String topic,String message){
         if (client.isConnected()) {
             try {
-                String topicName = topic;
-                client.publish(topicName, // topic
+
+                client.publish(topic, // topicName
                         message.getBytes(), 2, // QoS
-                        true); // retained?
+                        false); // retained?
 
             } catch (MqttException e) {
                 Log.e(TAG,"Error while publishing a message");

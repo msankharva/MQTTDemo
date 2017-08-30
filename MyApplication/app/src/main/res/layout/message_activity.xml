@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,111 +9,162 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.moulik.myapplication.PublishMessageActivity">
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
 
-    <Button
-        android:id="@+id/SL1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Speed Limit 1"
-        android:layout_marginTop="15dp"
-        />
-
-    <Button
-        android:id="@+id/SL2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Speed Limit 2"
-        android:layout_marginTop="15dp"
-       />
-    <Button
-        android:id="@+id/SL3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Speed Limit 3"
-        android:layout_marginTop="15dp"
-        />
-    <Button
-        android:id="@+id/SL4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Speed Limit 4"
-        android:layout_marginTop="15dp"
-        />
-    <Button
-        android:id="@+id/reverseBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Reverse"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="10dp"/>
-    <RadioGroup
-        android:id="@+id/radioGroupForReverse"
+    <LinearLayout
+        android:id="@+id/carLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <RadioButton
-            android:id="@+id/zero_reverse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="zero"
-            android:textSize="15dp"
-            android:onClick="onRadioButtonClicked"
-            android:layout_marginRight="20dp"/>
-        <RadioButton
-            android:id="@+id/one_reverse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
-            android:text="one"
-            android:textSize="15dp" />
-    </RadioGroup>
+        android:orientation="horizontal"
+        android:weightSum="5"
+        android:paddingBottom="10dp">
 
-    <Button
-        android:id="@+id/switchBtn"
+        <Button
+            android:id="@+id/car1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="C1"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/car2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="C2"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/car3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="C3"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/car4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="C4"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/car5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="C5"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Switch"
-        android:layout_marginTop="15dp"
-       />
+        android:layout_height="match_parent"
+        android:layout_below="@id/carLayout">
 
-    <RadioGroup
-        android:id="@+id/radioGroupForSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <RadioButton
-            android:id="@+id/zero_switch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="zero"
-            android:textSize="15dp"
-            android:onClick="onRadioButtonClicked"
-            android:layout_marginRight="20dp"/>
-        <RadioButton
-            android:id="@+id/one_switch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="one"
-            android:onClick="onRadioButtonClicked"
-            android:textSize="15dp" />
-    </RadioGroup>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/messageText"
-        android:textAllCaps="true"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:layout_marginTop="20dp"/>
+            <Button
+                android:id="@+id/SL1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Speed Limit 1" />
 
-</LinearLayout>
-</ScrollView>
+            <Button
+                android:id="@+id/SL2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Speed Limit 2" />
+
+            <Button
+                android:id="@+id/SL3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Speed Limit 3" />
+
+            <Button
+                android:id="@+id/SL4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Speed Limit 4" />
+
+            <Button
+                android:id="@+id/reverseBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="15dp"
+                android:text="Reverse" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupForReverse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/zero_reverse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="zero"
+                    android:textSize="15dp" />
+
+                <RadioButton
+                    android:id="@+id/one_reverse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="one"
+                    android:textSize="15dp" />
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/switchBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Switch" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupForSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/zero_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="zero"
+                    android:textSize="15dp" />
+
+                <RadioButton
+                    android:id="@+id/one_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="one"
+                    android:textSize="15dp" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/messageText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

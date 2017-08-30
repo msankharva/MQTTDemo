@@ -16,6 +16,8 @@ import org.eclipse.paho.client.mqttv3.IMqttToken;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 
+import java.util.UUID;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView connectionStatus;
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText portValue;
     private RelativeLayout buttonLayout;
 
-    String ClientId = "RedmiMobile";
+    String ClientId = UUID.randomUUID().toString();
     static MqttAndroidClient client ;
 
     StringBuffer msg = new StringBuffer();
@@ -65,9 +67,6 @@ public class MainActivity extends AppCompatActivity {
                     token.setActionCallback(new IMqttActionListener() {
                         @Override
                         public void onSuccess(IMqttToken asyncActionToken) {
-                            //connectionStatus.setVisibility(View.VISIBLE);
-                           // connectionStatus.setText("Connection Established Successfully... What do you want to do?");
-                            //buttonLayout.setVisibility(View.VISIBLE);
                             Log.i("MainActivity","Connection Established Successfully...");
                             Intent intent = new Intent(MainActivity.this,PublishMessageActivity.class);
                             startActivity(intent);
@@ -75,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
                         @Override
                         public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
-                           // connectionStatus.setText("Something went wrong.. Try again");
+
                             Log.e("ConnectionOnFailure", exception.getMessage());
 
                         }
@@ -110,8 +109,6 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("action","subscribe");
                     break;
             }
-
-           // intent.putExtra("MQTTCLIENT", (Serializable) client);
             startActivity(intent);
         }
     };
